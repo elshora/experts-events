@@ -1,9 +1,8 @@
 import EventsModel from "@/models/events";
 import { connectDb } from "@/util/db";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest) {
+export async function GET<T extends Request | NextRequest>(req: T) {
   try {
     await connectDb();
     const events = await EventsModel.find();
