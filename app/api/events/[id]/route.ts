@@ -1,11 +1,9 @@
 import EventsModel from "@/models/events";
 import session from "@/models/sessions";
 import { connectDb } from "@/util/db";
-import mongoose from "mongoose";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest) {
+export async function GET<T extends Request | NextRequest>(req: T) {
   try {
     const id = req.url?.slice(req.url.lastIndexOf("/") + 1);
     await connectDb();
