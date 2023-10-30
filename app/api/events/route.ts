@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET<T extends Request | NextRequest>(req: T) {
   try {
     await connectDb();
+    console.log("test");
     const events = await EventsModel.find();
     return NextResponse.json({ events });
   } catch (error) {
