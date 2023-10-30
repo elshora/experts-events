@@ -1,9 +1,8 @@
 import { connectDb } from "@/util/db";
 import mongoose from "mongoose";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(req: NextApiRequest) {
+export async function GET<T extends Request | NextRequest>(req: T) {
   try {
     await connectDb();
     const id = req.url?.slice(req.url.lastIndexOf("/") + 1);
