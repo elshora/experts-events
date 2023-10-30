@@ -2,10 +2,7 @@ import mongoose from "mongoose";
 
 export const connectDb = async () => {
   if (mongoose.connection.readyState === 0) {
-    await mongoose.connect(process.env.DB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.DB_URL as unknown as string);
   }
 };
 
