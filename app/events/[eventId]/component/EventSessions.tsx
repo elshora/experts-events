@@ -1,3 +1,6 @@
+import { faPhabricator } from "@fortawesome/free-brands-svg-icons";
+import { faPlaceOfWorship } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React from "react";
 interface SessionsProps {
@@ -21,7 +24,7 @@ const EventSessions: React.FC<SessionsProps> = ({ sessions }) => {
             <div className="row">
               {session?.experts.length > 0 &&
                 session.experts.map((expert, index) => (
-                  <div key={index} className="col-6 ">
+                  <div key={index} className="col-12 col-md-6 ">
                     <div className="bg-white rounded p-3 mb-3 text-center">
                       {expert.imgLink && (
                         <Image
@@ -29,13 +32,40 @@ const EventSessions: React.FC<SessionsProps> = ({ sessions }) => {
                           src={expert.imgLink}
                           width={100}
                           height={100}
-                          alt={expert.firstName ?? ""}
+                          alt={expert.firstName || ""}
                         />
                       )}
                       <h6 className="mt-3 fw-bold text-muted">
-                        {expert.firstName} {expert.firstName}
+                        {expert.firstName} {expert.lastName}
                       </h6>
-                      <p className="text-muted  session-bio">{expert.bio}</p>
+                      <div className="text-start">
+                        {expert.title && (
+                          <div className="info-line">
+                            <FontAwesomeIcon
+                              icon={faPhabricator}
+                              width={12}
+                              className="me-1"
+                            />
+                            {expert.title}
+                          </div>
+                        )}
+                        {expert.organization && (
+                          <div className="info-line">
+                            <FontAwesomeIcon
+                              icon={faPlaceOfWorship}
+                              width={12}
+                              className="me-1"
+                            />
+                            {expert.organization}
+                          </div>
+                        )}
+                        <button
+                          className="w-100 btn btn-outline-warning text-dark mt-1"
+                          disabled
+                        >
+                          More Details!
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
