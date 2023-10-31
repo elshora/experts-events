@@ -15,7 +15,7 @@ const DataTable: React.FC<FilterComponentProps> = ({ experts }) => {
     () => [
       {
         headerName: `Name`,
-        field: "name",
+        field: "firstName",
         minWidth: 170,
         sortable: true,
         cellRenderer: (params: any) => (
