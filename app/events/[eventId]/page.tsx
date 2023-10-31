@@ -38,10 +38,13 @@ export default async function eventPage({ params: { eventId } }: Params) {
             singleEvent?.tags.map((tag, i) => <TagsBtn key={i} text={tag} />)}
         </div>
         <Link
-          className="btn btn-info my-1 text-dark"
+          className="btn btn-primary my-1 text-light mx-auto"
           href={singleEvent.link}
           rel="noopener noreferrer"
           target="_blank"
+          style={{
+            width: "fit-content",
+          }}
         >
           Go to Event Original Page
         </Link>
