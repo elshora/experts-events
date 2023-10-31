@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Events",
 };
 export default async function eventPage() {
+  // loading all events da
   const data: Promise<EVENT[]> = getAllEvents();
   const events = await data;
   const content = (
