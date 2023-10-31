@@ -1,21 +1,24 @@
 import EventsModel from "@/models/events";
+import ExpertsModel from "@/models/experts";
 import session from "@/models/sessions";
+// require("@/models/experts");
+// require("@/models/sessions");
 import { connectDb } from "@/util/db";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET<T extends Request | NextRequest>(req: T) {
   try {
-    const id = req.url?.slice(req.url.lastIndexOf("/") + 1);
     await connectDb();
-    const event = await EventsModel.findById(id);
-    const sessionIds = event.sessions;
-    const sessions = await session.find({ _id: { $in: sessionIds } });
-    event.sessions = await sessions;
+    const id = req.url?.slice(req.url.lastIndexOf("/") + 1);
+    const event = await EventsModel.findById(id).populate({
+      path: "sessions",
+      populate: {
+        path: "experts",
+      },
+    });
     return NextResponse.json({ event });
   } catch (error) {
-    return NextResponse.json(
-      { message: "Some thing went Wrong!" },
-      { status: 400 }
-    );
+    console.log(error);
+    return NextResponse.json({ message: "Some thing went Wrong!" });
   }
 }

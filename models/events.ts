@@ -19,6 +19,6 @@ const EventsSchema = new Schema<EVENT>(
   }
 );
 const EventsModel =
-  mongoose.models.Event || mongoose.model("Event", EventsSchema);
+  mongoose.models.event || mongoose.model("event", EventsSchema);
 
 export default EventsModel;

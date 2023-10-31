@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
 const ExpertsSchema = new Schema<EXPERT>(
   {
@@ -10,7 +11,7 @@ const ExpertsSchema = new Schema<EXPERT>(
     bio: { type: String },
     imgLink: { type: String },
     sessions: [{ type: Schema.Types.ObjectId, ref: "session" }],
-    events: [{ type: Schema.Types.ObjectId, red: "event" }],
+    events: [{ type: Schema.Types.ObjectId, ref: "event" }],
     gender: { type: String, enum: ["male", "female"] },
     nationality: { type: String },
     age: { type: Number },
@@ -23,4 +24,7 @@ const ExpertsSchema = new Schema<EXPERT>(
   }
 );
 
-export const ExpertsModel = model<EXPERT>("expert", ExpertsSchema);
+const ExpertsModel =
+  mongoose.models.expert || mongoose.model("expert", ExpertsSchema);
+
+export default ExpertsModel;

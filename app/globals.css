@@ -70,3 +70,9 @@ a {
   align-items: center;
   height: calc(100vh - 61px);
 }
+.session-bio {
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 50px;
+}
