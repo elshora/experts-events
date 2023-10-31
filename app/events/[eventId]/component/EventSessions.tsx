@@ -2,6 +2,7 @@ import { faPhabricator } from "@fortawesome/free-brands-svg-icons";
 import { faPlaceOfWorship } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 interface SessionsProps {
   sessions: SESSION[];
@@ -59,12 +60,12 @@ const EventSessions: React.FC<SessionsProps> = ({ sessions }) => {
                             {expert.organization}
                           </div>
                         )}
-                        <button
+                        <Link
                           className="w-100 btn btn-outline-warning text-dark mt-1"
-                          disabled
+                          href={`/experts/${expert._id}`}
                         >
                           More Details!
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

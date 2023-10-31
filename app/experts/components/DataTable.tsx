@@ -5,6 +5,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { ColDef } from "ag-grid-community";
 import Image from "next/image";
+import Link from "next/link";
 interface FilterComponentProps {
   experts: EXPERT[];
 }
@@ -19,13 +20,18 @@ const DataTable: React.FC<FilterComponentProps> = ({ experts }) => {
         sortable: true,
         cellRenderer: (params: any) => (
           <>
-            <Image
-              src={srcLoader(params.data?.imgLink)}
-              height={50}
-              width={50}
-              alt="logo"
-            />{" "}
-            <span>{`${params.data?.firstName} ${params.data?.lastName}`}</span>
+            <Link
+              href={`/experts/${params.data._id}`}
+              style={{ color: "blue", fontWeight: "light" }}
+            >
+              <Image
+                src={srcLoader(params.data?.imgLink)}
+                height={50}
+                width={50}
+                alt="logo"
+              />{" "}
+              <span>{`${params.data?.firstName} ${params.data?.lastName}`}</span>
+            </Link>
           </>
         ),
       },
