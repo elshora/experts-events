@@ -5,7 +5,7 @@ const getExperts = async () => {
     const res = await axios.get(
       "https://experts-events.vercel.app/api/experts"
     );
-    return res.data;
+    return res.data?.experts;
   } catch (error) {
     console.log(error);
   }

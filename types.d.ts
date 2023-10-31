@@ -38,11 +38,3 @@ type EXPERT = {
   externalLinks: string[];
   tags: string[];
 };
-
-type TABLEEXPERT = {
-  name: HTMLElement;
-  title: string;
-  organization: string;
-  bio: string;
-  img: HTMLElement;
-};
