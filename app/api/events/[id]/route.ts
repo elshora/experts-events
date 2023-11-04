@@ -1,6 +1,4 @@
 import EventsModel from "@/models/events";
-// import ExpertsModel from "@/models/experts";
-// import session from "@/models/sessions";
 require("@/models/experts");
 require("@/models/sessions");
 import { connectDb } from "@/util/db";
