@@ -1,16 +1,22 @@
-import Link from "next/link";
-import React from "react";
+import React, { MouseEvent } from "react";
 interface FilterButtonProps {
   text: string;
+  handleFilterChange: (filter: MouseEvent<HTMLButtonElement>) => void;
 }
-const FilterBtn: React.FC<FilterButtonProps> = ({ text }) => {
+const FilterBtn: React.FC<FilterButtonProps> = ({
+  handleFilterChange,
+  text,
+}) => {
   return (
-    <Link
+    <button
       className="btn text-capitalize d-block"
-      href={`/events${text === "all" ? "" : "?period=" + text}`}
+      onClick={(e) => {
+        handleFilterChange(e);
+      }}
+      value={text}
     >
       {text}
-    </Link>
+    </button>
   );
 };
 
