@@ -8,6 +8,7 @@ export async function GET<T extends Request | NextRequest>(req: T) {
   try {
     await connectDb();
     const id = req.url?.slice(req.url.lastIndexOf("/") + 1);
+    // handle populate sessions and experts for each session
     const event = await EventsModel.findById(id).populate({
       path: "sessions",
       populate: {
