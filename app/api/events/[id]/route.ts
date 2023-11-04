@@ -17,6 +17,9 @@ export async function GET<T extends Request | NextRequest>(req: T) {
     return NextResponse.json({ event });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ message: "Some thing went Wrong!" });
+    return NextResponse.json(
+      { message: "Some thing went Wrong!" },
+      { status: 400 }
+    );
   }
 }
