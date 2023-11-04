@@ -8,16 +8,13 @@ import React, { useState } from "react";
 import FilterComponent from "./FilterComponent";
 import moment from "moment";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 interface FilterComponentProps {
   events: EVENT[];
 }
 const EventsList: React.FC<FilterComponentProps> = ({ events }) => {
-  const [filteredEvents, setFilteredEvents] = useState<EVENT[]>(events);
   const [hydrated, setHydrated] = useState(false);
-  const router = useRouter();
   React.useEffect(() => {
     setHydrated(true);
   }, []);
@@ -25,38 +22,11 @@ const EventsList: React.FC<FilterComponentProps> = ({ events }) => {
     // Returns null on first render, so the client and server match
     return null;
   }
-  const currentDate = moment();
-  const handleFilter = (filter: string) => {
-    let filteredData;
-    switch (filter) {
-      case "all":
-        setFilteredEvents(events);
-        break;
-      case "upcoming":
-        filteredData = events.filter((e) => {
-          const date = moment(e.date);
-          return date.isAfter(currentDate);
-        });
-        setFilteredEvents(filteredData);
-        break;
-      case "old":
-        filteredData = events.filter((e) => {
-          const date = moment(e.date);
-          return date.isBefore(currentDate);
-        });
-        setFilteredEvents(filteredData);
-        break;
-      default:
-        setFilteredEvents(events);
-        break;
-    }
-  };
-
   return (
     <>
-      <FilterComponent onFilter={handleFilter} />
+      <FilterComponent />
       <div className="row">
-        {filteredEvents?.map((ele) => (
+        {events?.map((ele) => (
           <article className="col-12 col-md-6 col-lg-4 " key={ele._id}>
             <Link
               href={`/events/${ele._id}`}
