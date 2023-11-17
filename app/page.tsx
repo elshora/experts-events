@@ -15,11 +15,17 @@ export default function Home() {
           alt="Events App"
         />
         <p className="d-flex gap-3 flex-column flex-md-row">
-          <Link className="fs-4 text-capitalize main-button" href="/events">
-            events page
+          <Link
+            className="fs-4 text-uppercase main-button bg-warning"
+            href="/events"
+          >
+            events
           </Link>
-          <Link className="fs-4 text-capitalize main-button" href="/experts">
-            experts page
+          <Link
+            className="fs-4 text-uppercase main-button bg-warning"
+            href="/experts"
+          >
+            experts
           </Link>
         </p>
       </div>
