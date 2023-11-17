@@ -41,7 +41,7 @@ const MainNavbar = () => {
               }`}
               href={"/experts"}
             >
-              expert
+              Experts
             </Link>
           </li>
         </ul>

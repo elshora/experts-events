@@ -64,7 +64,10 @@ const ExpertFullData: React.FC<ExpertDataProps> = ({ expert }) => {
           <div className="info-line">
             <FontAwesomeIcon icon={faServer} width={12} className="me-1 py-1" />
             <span className="fs-5">Event: </span>
-            <Link href={`/events/${expert.events[0]._id}`}>
+            <Link
+              href={`/events/${expert.events[0]._id}`}
+              className="text-primary text-decoration-underline fw-bold"
+            >
               {expert.events[0].title || "N/A"}
             </Link>
           </div>
